@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Site.Pages.ServiceGymTypes.ServiceGymTypesDelete"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Site.Pages.ServiceGymTypes"
+      xmlns:resx="clr-namespace:Site.Globalizacion"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="545" d:DesignWidth="1000"
+      >
+
+    <Grid Background="White">
+        <StackPanel>
+            <Grid Height="55">
+                <Label VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" 
+                       Content="{x:Static resx:ServiceGymTypesResx.lblTituloPagina }"/>
+            </Grid>
+            <StackPanel Height="342" Width="1000" Orientation="Horizontal">
+                <Grid Width="1000" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <StackPanel>
+                        <Grid Height="30">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Name="Id" Visibility="Hidden"></TextBox>
+                                <Grid Width="342" Margin="8 0">
+                                    <Label Content="{x:Static resx:ServiceGymTypesResx.HeaderType }"/>
+                                </Grid>
+                                <Grid Width="342" Margin="8 0">
+                                    <Label Name="Type" FontWeight="Bold"></Label>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="60" Width="1000"  VerticalAlignment="Center">
+                <Button  Content="{x:Static resx:ServiceGymTypesResx.HeaderDelete }" Name="Delete" Click="DeleteServiceGymType_Click" CommandParameter="{Binding Id}" Foreground="White" Margin="10 0" 
+                         Background="PaleVioletRed" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18" />
+                <Button  Content="{x:Static resx:ServiceGymTypesResx.lblBackToList }" Name="BackToListClients" Click="BackToListServiceGymType_Click" Foreground="#FFA2A2A2" Background="GhostWhite" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18"  />
+            </StackPanel>
+            <StackPanel Height="80">
+                <materialDesign:Snackbar Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SnackBarMessages" VerticalAlignment="Bottom">
+                    <materialDesign:SnackbarMessage />
+                </materialDesign:Snackbar>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

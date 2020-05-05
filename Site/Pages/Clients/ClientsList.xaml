@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Site.Pages.Clients.ClientsList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:resx="clr-namespace:Site.Globalizacion"
+      mc:Ignorable="d" 
+      d:DesignHeight="545" d:DesignWidth="1000">
+   
+    <Grid Background="White">
+        <StackPanel>
+            <Grid Height="Auto">
+                <Label VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"
+                       Content="{x:Static resx:ClientsPageResources.lblTituloListaCliente}"
+                       />
+            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <Grid Height="55" Width="342">
+                    <Button Click="CreateClient_Click" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"
+                            Content="{x:Static resx:ClientsPageResources.CrearCliente}"
+                            Foreground="#FFA2A2A2"/>
+                </Grid>
+                <Grid Width="600">
+                    <TextBox VerticalAlignment="Center" 
+                             Width="500" Name="ClientId" 
+                             TabIndex="0" 
+                             materialDesign:HintAssist.Hint="{x:Static resx:ClientsPageResources.lblNombre}"  
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             TextChanged="ClientId_TextChanged"
+                             />
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="342" Width="1000" Orientation="Horizontal">
+                <Grid Width="1000">
+                    <DataGrid x:Name="DataGridClients" Background="White" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding listaClientes}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{x:Static resx:ClientsPageResources.lblIdentificacion}"  Binding="{Binding Identification,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                            <DataGridTextColumn Header="{x:Static resx:ClientsPageResources.lblNombre}"  Binding="{Binding Name,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <DataGridTextColumn Header="{x:Static resx:ClientsPageResources.lblSegundoNombre}"  Binding="{Binding MiddleName,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <DataGridTextColumn Header="{x:Static resx:ClientsPageResources.lblPrimerApellido}"  Binding="{Binding LastName,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <DataGridTextColumn Header="{x:Static resx:ClientsPageResources.lblSegundoApellido}"  Binding="{Binding SecondSurName,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"/>
+                            <DataGridTemplateColumn Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Height="25" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" Background="{x:Null}" 
+                                                Content="{x:Static resx:ClientsPageResources.Editar}" 
+                                                Click="Edit_Click" CommandParameter="{Binding Id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Height="25" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" Background="{x:Null}" 
+                                                Content="{x:Static resx:ClientsPageResources.lblTituloDetalles}" 
+                                                Click="Details_Click"  CommandParameter="{Binding Id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Height="25" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" Background="{x:Null}" 
+                                                Content="{x:Static resx:ClientsPageResources.lblTituloEliminar}" 
+                                                Click="Delete_Click"  CommandParameter="{Binding Id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="80">
+                <materialDesign:Snackbar Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SnackBarMessages" VerticalAlignment="Bottom">
+                    <materialDesign:SnackbarMessage />
+                </materialDesign:Snackbar>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

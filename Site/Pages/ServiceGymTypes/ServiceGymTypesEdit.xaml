@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Site.Pages.ServiceGymTypes.ServiceGymTypesEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:resx="clr-namespace:Site.Globalizacion"
+      xmlns:local="clr-namespace:Site.Pages.ServiceGymTypes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:c="clr-namespace:Site.Validations"
+      xmlns:Local1="clr-namespace:Site.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="545" d:DesignWidth="1000"
+      >
+
+    <UserControl.Resources>
+        <Local1:ServiceGymTypeViewModel x:Key="Ods" />
+    </UserControl.Resources>
+
+    <Grid Background="WhiteSmoke">
+        <StackPanel>
+            <Grid Height="55">
+                <Label VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" 
+                       Content="{x:Static resx:ServiceGymTypesResx.lblTituloPageEdit }"/>
+            </Grid>
+            <StackPanel Height="342" Width="1000" Orientation="Horizontal">
+                <Grid Width="1000">
+                    <StackPanel>
+                        <Grid Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox Name="Id" Visibility="Hidden"></TextBox>
+                                    <TextBox Name="Type" TabIndex="0" materialDesign:HintAssist.Hint="{x:Static resx:ServiceGymTypesResx.lblNombre }"  Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding Path="Name" Source="{StaticResource Ods}" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <c:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="60" Width="1000"  VerticalAlignment="Center">
+                <Button  Content="{x:Static resx:ServiceGymTypesResx.btnEdit }" Name="Insert" Click="EditServiceGymType_Click" Foreground="White" Margin="10 0" Background="Gray" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18" />
+                <Button  Content="{x:Static resx:ServiceGymTypesResx.lblBackToList }" Name="BackToListServiceGymType" Click="BackToListServiceGymType_Click" Foreground="#FFA2A2A2" Background="GhostWhite" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18"  />
+            </StackPanel>
+            <StackPanel Height="80">
+                <materialDesign:Snackbar Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SnackBarMessages" VerticalAlignment="Bottom">
+                    <materialDesign:SnackbarMessage />
+                </materialDesign:Snackbar>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

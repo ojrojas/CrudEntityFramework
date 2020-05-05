@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="Site.Pages.Clients.ClientsEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Site.Pages.Clients"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:resx="clr-namespace:Site.Globalizacion"
+      xmlns:c="clr-namespace:Site.Validations"
+      xmlns:Local1="clr-namespace:Site.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="545" d:DesignWidth="1000"
+      >
+
+    <UserControl.Resources>
+        <Local1:ClientViewModel x:Key="Ods" />
+    </UserControl.Resources>
+    <Grid Background="White">
+        <StackPanel>
+            <Grid Height="55">
+                <Label VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Background="{x:Null}"
+                       BorderBrush="{x:Null}" Content="{x:Static resx:ClientsPageResources.lblTituloEditar}"/>
+            </Grid>
+            <StackPanel Height="342" Width="1000" Orientation="Horizontal">
+                <Grid Width="700">
+                    <StackPanel>
+                        <Grid Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox Name="Name" TabIndex="0" materialDesign:HintAssist.Hint="{x:Static resx:ClientsPageResources.lblNombre}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding Path="Name" Source="{StaticResource Ods}" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <c:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </Grid>
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox Name="Identification" TabIndex="5" MaxLength="12"
+                                             materialDesign:HintAssist.Hint="{x:Static resx:ClientsPageResources.lblIdentificacion}" Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding Path="Identification" Source="{StaticResource Ods}" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <c:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBox Visibility="Hidden" Name="Id"></TextBox>
+                                    <TextBox Visibility="Hidden" Name="IdentityGuid"></TextBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox Name="MiddleName" TabIndex="1" materialDesign:HintAssist.Hint="{x:Static resx:ClientsPageResources.lblSegundoNombre}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                                </Grid>
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox Name="Phone" TabIndex="6" materialDesign:HintAssist.Hint="{x:Static resx:ClientsPageResources.lblTelefono}" Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding Path="Phone" Source="{StaticResource Ods}" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <c:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox x:Name="LastName" TabIndex="2" materialDesign:HintAssist.Hint="{x:Static resx:ClientsPageResources.lblPrimerApellido}" Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding Path="LastName" Source="{StaticResource Ods}" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <c:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </Grid>
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox x:Name="Age" TabIndex="7" materialDesign:HintAssist.Hint="{x:Static resx:ClientsPageResources.lblEdad}" Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding Path="Age" Source="{StaticResource Ods}" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <c:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox x:Name="SecondSurName" TabIndex="3" materialDesign:HintAssist.Hint="{x:Static resx:ClientsPageResources.lblSegundoApellido}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                                </Grid>
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox x:Name="Address" TabIndex="8" IsTabStop="True" materialDesign:HintAssist.Hint="{x:Static resx:ClientsPageResources.lblDireccion}" Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding Path="Address" Source="{StaticResource Ods}" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <c:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    
+                    </StackPanel>
+                </Grid>
+                <Grid Width="300">
+                    <StackPanel>
+                        <Grid>
+                            <materialDesign:Card Padding="2" Margin="35" Height="250">
+                                <StackPanel Orientation="Vertical">
+                                    <Grid Height="40">
+                                        <Button 
+                                            Width="100" 
+                                            Name="BtnInsertPhoto" 
+                                            HorizontalAlignment="Left" 
+                                            BorderBrush="{x:Null}" 
+                                            Background="{x:Null}" 
+                                            Foreground="#FFA2A2A2" 
+                                            Click="InsertImage_Click"
+                                            Content="{x:Static resx:ClientsPageResources.lblFoto}"/>
+                                    </Grid>
+                                    <Grid Height="210">
+                                        <Image Height="200" x:Name="ImageClient" />
+                                    </Grid>
+                                </StackPanel>
+                            </materialDesign:Card>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="60" Width="1000"  VerticalAlignment="Center">
+                <Button  Content="{x:Static resx:ClientsPageResources.Editar}" Name="Edit" Click="EditClient_Click" Foreground="White" Margin="10 0" Background="Gray" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18" />
+                <Button  Content="{x:Static resx:ClientsPageResources.RetornarListado}" Name="BackToListClients" Click="BackToListClients_Click" Foreground="#FFA2A2A2" Background="GhostWhite" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18"  />
+            </StackPanel>
+            <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" FontSize="34"
+                                                 x:Name="SnackBarEditClients" />
+        </StackPanel>
+    </Grid>
+
+</UserControl>

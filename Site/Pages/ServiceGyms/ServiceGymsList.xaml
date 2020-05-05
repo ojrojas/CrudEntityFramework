@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Site.Pages.ServiceGyms.ServiceGymsList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Site.Pages.ServiceGyms"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      >
+    <Grid Background="White">
+        <StackPanel>
+            <Grid Height="55">
+                <Label VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}">Lista de Servicios Gimnasio</Label>
+            </Grid>
+            <Grid Height="55">
+                <Button Click="CreateServiceGym_Click" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2">Crear Servicio de Gimnasio</Button>
+            </Grid>
+            <StackPanel Height="342" Width="1000" Orientation="Horizontal">
+                <Grid Width="1000">
+                    <DataGrid x:Name="DataGridServiceGyms" IsReadOnly="True" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" AutoGenerateColumns="False" Background="White">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Tipo" Binding="{Binding ServiceGymType.Type}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nombre"  Binding="{Binding Name}"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Editar">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Height="25" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" Background="{x:Null}" Content="Editar" Click="Edit_Click" CommandParameter="{Binding Id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Detalles">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Height="25" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" Background="{x:Null}" Content="Detalles" Click="Details_Click"  CommandParameter="{Binding Id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Eliminar">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Height="25" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" Background="{x:Null}" Content="Eliminar" Click="Delete_Click"  CommandParameter="{Binding Id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </StackPanel>
+            <StackPanel Height="80">
+                <materialDesign:Snackbar Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SnackBarMessages" VerticalAlignment="Bottom">
+                    <materialDesign:SnackbarMessage />
+                </materialDesign:Snackbar>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

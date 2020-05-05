@@ -1,0 +1,4 @@
+namespace KallpaBox.Infraestructura.Identity
+{
+
+}

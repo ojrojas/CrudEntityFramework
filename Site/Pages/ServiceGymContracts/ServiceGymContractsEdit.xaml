@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="Site.Pages.ServiceGymContracts.ServiceGymContractsEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Site.Pages.ServiceGymContracts"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:c="clr-namespace:Site.Validations"
+      xmlns:Local1="clr-namespace:Site.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="545" d:DesignWidth="1000"
+      >
+
+    <UserControl.Resources>
+        <Local1:ServiceGymContractViewModel x:Key="Ods" />
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <StackPanel>
+            <Grid Height="55">
+                <Label VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" >Editar Servicio Gimnasio</Label>
+            </Grid>
+            <StackPanel Height="342" Width="1000" Orientation="Horizontal">
+                <Grid Width="1000">
+                    <StackPanel>
+                        <Grid Height="50">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox Name="Id" Visibility="Hidden"></TextBox>
+                                    <ComboBox Name="ServiceGymId" materialDesign:HintAssist.Hint="Servicio Gimnasio">
+
+                                    </ComboBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="50">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <ComboBox 
+                                        Name="ClientId" 
+                                        materialDesign:HintAssist.Hint="Cliente"
+                                        IsEditable="True" 
+                                        TextBoxBase.TextChanged="ClientId_TextChanged">
+                                    </ComboBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="50">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <ComboBox Name="TypeQuantity" TabIndex="0" SelectedValuePath="Tag" materialDesign:HintAssist.Hint="Tipo Cantidad">
+                                        <ComboBoxItem  Content="Type Month" Tag="1" />
+                                        <ComboBoxItem Content="Type Days"  Tag="2" /> 
+                                    </ComboBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="50">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox Name="Quantity" TabIndex="0" materialDesign:HintAssist.Hint="Cantidad"  Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding Path="Quantity" Source="{StaticResource Ods}" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <c:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Height="50">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Width="342" Margin="8 0">
+                                    <TextBox Name="Price" TabIndex="0" materialDesign:HintAssist.Hint="Precio"  Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding Path="Price" Source="{StaticResource Ods}" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <c:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="60" Width="1000"  VerticalAlignment="Center">
+                <Button  Content="Editar" Name="Insert" Click="EditServiceGymContract_Click" Foreground="White" Margin="10 0" Background="Gray" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18" />
+                <Button  Content="Volver al Listado" Name="BackToListServiceGym" Click="BackToListServiceGymContract_Click" Foreground="#FFA2A2A2" Background="GhostWhite" FontWeight="Bold" BorderBrush="{x:Null}" FontSize="18"  />
+            </StackPanel>
+            <StackPanel Height="80">
+                <materialDesign:Snackbar Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SnackBarMessages" VerticalAlignment="Bottom">
+                    <materialDesign:SnackbarMessage />
+                </materialDesign:Snackbar>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

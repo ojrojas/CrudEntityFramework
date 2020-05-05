@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C956A631-5903-49F2-80D3-2A19138CE612}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Site</RootNamespace>
+    <AssemblyName>Site</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Boxed.Mapping, Version=1.4.0.0, Culture=neutral, PublicKeyToken=fc5550082a9c642c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Boxed.Mapping.1.4.0\lib\netstandard2.0\Boxed.Mapping.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ftrSDKHelper12, Version=4.2.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Infraestructura\Sdks\Futronics\sdks\ftrSDKHelper12.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.5.0.4\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.2.920, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ShowMeTheXAML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ShowMeTheXAML.1.0.12\lib\net45\ShowMeTheXAML.dll</HintPath>
+    </Reference>
+    <Reference Include="ShowMeTheXAML.AvalonEdit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ShowMeTheXAML.AvalonEdit.1.0.12\lib\net45\ShowMeTheXAML.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Constants\ConstantsAccessPage.cs" />
+    <Compile Include="Constants\ConstantsClients.cs" />
+    <Compile Include="Constants\ConstantsDashBoard.cs" />
+    <Compile Include="Constants\ConstantsFingerPrints.cs" />
+    <Compile Include="Constants\ConstantsServiceGym.cs" />
+    <Compile Include="Constants\ConstantsServiceGymContracts.cs" />
+    <Compile Include="Constants\ConstantsServiceGymType.cs" />
+    <Compile Include="Converts\SessionGymToServiceGymViewModel.cs" />
+    <Compile Include="Converts\SessionGymViewModelToSessionGym.cs" />
+    <Compile Include="Data\EfRepository.cs" />
+    <Compile Include="Data\GymContext.cs" />
+    <Compile Include="Data\SpecificationEvaluator.cs" />
+    <Compile Include="Globalizacion\AccessPageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccessPageResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Globalizacion\ClientsPageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientsPageResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Globalizacion\DashBoardPageResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DashBoardPageResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Globalizacion\FingerPrintPageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FingerPrintPageResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Globalizacion\ServiceGymContratsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceGymContratsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Globalizacion\ServiceGymTypesResx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceGymTypesResx.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Access\AccessPage.xaml.cs">
+      <DependentUpon>AccessPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Clients\Clients.xaml.cs">
+      <DependentUpon>Clients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Clients\ClientsDelete.xaml.cs">
+      <DependentUpon>ClientsDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Clients\ClientsDetails.xaml.cs">
+      <DependentUpon>ClientsDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Clients\ClientsEdit.xaml.cs">
+      <DependentUpon>ClientsEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Clients\ClientsList.xaml.cs">
+      <DependentUpon>ClientsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DashBoard\DashBoard.xaml.cs">
+      <DependentUpon>DashBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FingerPrints\FingerPrintsCreate.xaml.cs">
+      <DependentUpon>FingerPrintsCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymContracts\ServiceGymContractsCreate.xaml.cs">
+      <DependentUpon>ServiceGymContractsCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymContracts\ServiceGymContractsDelete.xaml.cs">
+      <DependentUpon>ServiceGymContractsDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymContracts\ServiceGymContractsDetails.xaml.cs">
+      <DependentUpon>ServiceGymContractsDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymContracts\ServiceGymContractsEdit.xaml.cs">
+      <DependentUpon>ServiceGymContractsEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymContracts\ServiceGymContractsList.xaml.cs">
+      <DependentUpon>ServiceGymContractsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGyms\ServiceGymsCreate.xaml.cs">
+      <DependentUpon>ServiceGymsCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGyms\ServiceGymsDelete.xaml.cs">
+      <DependentUpon>ServiceGymsDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGyms\ServiceGymsDetails.xaml.cs">
+      <DependentUpon>ServiceGymsDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGyms\ServiceGymsEdit.xaml.cs">
+      <DependentUpon>ServiceGymsEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGyms\ServiceGymsList.xaml.cs">
+      <DependentUpon>ServiceGymsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymTypes\ServiceGymTypesCreate.xaml.cs">
+      <DependentUpon>ServiceGymTypesCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymTypes\ServiceGymTypesDelete.xaml.cs">
+      <DependentUpon>ServiceGymTypesDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymTypes\ServiceGymTypesDetails.xaml.cs">
+      <DependentUpon>ServiceGymTypesDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymTypes\ServiceGymTypesEdit.xaml.cs">
+      <DependentUpon>ServiceGymTypesEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServiceGymTypes\ServiceGymTypesList.xaml.cs">
+      <DependentUpon>ServiceGymTypesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SessionsGyms\SessionsGymsCreate.xaml.cs">
+      <DependentUpon>SessionsGymsCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SessionsGyms\SessionsGymsDelete.xaml.cs">
+      <DependentUpon>SessionsGymsDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SessionsGyms\SessionsGymsDetails.xaml.cs">
+      <DependentUpon>SessionsGymsDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SessionsGyms\SessionsGymsEdit.xaml.cs">
+      <DependentUpon>SessionsGymsEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SessionsGyms\SessionsGymsList.xaml.cs">
+      <DependentUpon>SessionsGymsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\ClientServiceViewModel.cs" />
+    <Compile Include="Services\FingerPrintService.cs" />
+    <Compile Include="Services\FingerPrintServiceViewModel.cs" />
+    <Compile Include="Services\FingerService.cs" />
+    <Compile Include="Services\PhotoService.cs" />
+    <Compile Include="Services\ServiceGymContractService.cs" />
+    <Compile Include="Services\ServiceGymContractServiceViewModel.cs" />
+    <Compile Include="Services\ServiceGymService.cs" />
+    <Compile Include="Services\ServiceGymServiceViewModel.cs" />
+    <Compile Include="Services\ServiceGymTypeService.cs" />
+    <Compile Include="Services\ServiceGymTypeServiceViewModel.cs" />
+    <Compile Include="Services\SessionGymService.cs" />
+    <Compile Include="Services\SessionGymServiceViewModel.cs" />
+    <Compile Include="Utils\BitmapFromUri.cs" />
+    <Compile Include="Utils\MaterialDesignDemo.cs" />
+    <Compile Include="Utils\CrossFadeContentControl.cs" />
+    <Compile Include="Utils\FileInfoExtension.cs" />
+    <Compile Include="Utils\FrameApp.cs" />
+    <Compile Include="Utils\NotifyPropertyChangedExtension.cs" />
+    <Compile Include="Utils\EnumsApp.cs" />
+    <Compile Include="Utils\PresentationMessage.cs" />
+    <Compile Include="Utils\ProcesarAbrirVentana.cs" />
+    <Compile Include="Utils\TextContainSearch.cs" />
+    <Compile Include="Validations\FieldsEmpty.cs" />
+    <Compile Include="Validations\NotEmptyValidationRule.cs" />
+    <Compile Include="ViewModels\ClientViewModel.cs" />
+    <Compile Include="ViewModels\FingerPrintViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MenusItems.cs" />
+    <Compile Include="ViewModels\PaginationInfoViewModel.cs" />
+    <Compile Include="ViewModels\PaymentMethodViewModel.cs" />
+    <Compile Include="ViewModels\PhotoViewModel.cs" />
+    <Compile Include="ViewModels\ServiceGymContractViewModel.cs" />
+    <Compile Include="ViewModels\ServiceGymTypeViewModel.cs" />
+    <Compile Include="ViewModels\ServiceGymViewModel.cs" />
+    <Compile Include="ViewModels\SessionGymViewModel.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converts\ClientToClientViewModel.cs" />
+    <Compile Include="Converts\ClientViewModelToClient.cs" />
+    <Compile Include="Converts\ServiceGymContractToServiceGymContractViewModel.cs" />
+    <Compile Include="Converts\ServiceGymContractViewModelToServiceGymContract.cs" />
+    <Compile Include="Converts\ServiceGymToServiceGymViewModel.cs" />
+    <Compile Include="Converts\ServiceGymTypeToServiceGymTypeViewModel.cs" />
+    <Compile Include="Converts\ServiceGymTypeViewModelToServiceGymType.cs" />
+    <Compile Include="Converts\ServiceGymViewModelToServiceGym.cs" />
+    <Compile Include="Interfaces\IClientServiceViewModel.cs" />
+    <Compile Include="Interfaces\IFingerPrintServiceViewModel.cs" />
+    <Compile Include="Interfaces\IServiceGymContractServiceViewModel.cs" />
+    <Compile Include="Interfaces\IServiceGymServiceViewModel.cs" />
+    <Compile Include="Interfaces\IServiceGymTypeServiceViewModel.cs" />
+    <Compile Include="Interfaces\ISessionGymServiceViewModel.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\Access\AccessPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Clients\Clients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Clients\ClientsDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Clients\ClientsDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Clients\ClientsEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Clients\ClientsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DashBoard\DashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FingerPrints\FingerPrintsCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymContracts\ServiceGymContractsCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymContracts\ServiceGymContractsDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymContracts\ServiceGymContractsDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymContracts\ServiceGymContractsEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymContracts\ServiceGymContractsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGyms\ServiceGymsCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGyms\ServiceGymsDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGyms\ServiceGymsDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGyms\ServiceGymsEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGyms\ServiceGymsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymTypes\ServiceGymTypesCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymTypes\ServiceGymTypesDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymTypes\ServiceGymTypesDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymTypes\ServiceGymTypesEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServiceGymTypes\ServiceGymTypesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SessionsGyms\SessionsGymsCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SessionsGyms\SessionsGymsDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SessionsGyms\SessionsGymsDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SessionsGyms\SessionsGymsEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SessionsGyms\SessionsGymsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Globalizacion\AccessPageResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccessPageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Globalizacion\ClientsPageResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClientsPageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Globalizacion\DashBoardPageResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DashBoardPageResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Globalizacion\FingerPrintPageResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FingerPrintPageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Globalizacion\ServiceGymContratsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ServiceGymContratsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Globalizacion\ServiceGymTypesResx.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ServiceGymTypesResx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{8f4db59f-9557-43c6-ac51-314cfd81b45f}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infraestructura\Infraestructura.csproj">
+      <Project>{a3d993ff-83ce-4ac2-96c9-5ca9102182b6}</Project>
+      <Name>Infraestructura</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets'))" />
+  </Target>
+  <Import Project="..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets" Condition="Exists('..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets')" />
+</Project>

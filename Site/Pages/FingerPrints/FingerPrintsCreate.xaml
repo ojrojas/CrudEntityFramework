@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="Site.Pages.FingerPrints.FingerPrintsCreate"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:c="clr-namespace:Site.Validations"
+      xmlns:Local1="clr-namespace:Site.ViewModels"
+      xmlns:resx="clr-namespace:Site.Globalizacion"
+      mc:Ignorable="d" 
+      d:DesignHeight="545" d:DesignWidth="1000"
+      Unloaded="Page_Unloaded">
+
+    <UserControl.Resources>
+        <Local1:FingerPrintViewModel x:Key="Ods" />
+    </UserControl.Resources>
+    <Grid Background="White">
+        <StackPanel>
+            <Grid Height="55">
+                <Label VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"
+                       Content="{x:Static resx:FingerPrintPageResources.lblTituloFingerPrints}"
+                       />
+            </Grid>
+            <StackPanel Height="380" Width="1000" Orientation="Horizontal">
+                <Grid Width="700">
+                    <StackPanel>
+                        <Grid Height="25">
+                            <StackPanel Height="40">
+                                <materialDesign:Snackbar Grid.Row="1" HorizontalAlignment="Stretch" x:Name="SnackBarMessagesLimits" VerticalAlignment="Bottom">
+                                    <materialDesign:SnackbarMessage />
+                                </materialDesign:Snackbar>
+                            </StackPanel>
+                            <Label Name="IdentificationLimits"></Label>
+                        </Grid>
+                        <Grid Height="25">
+                            <Label Name="lblMessage"></Label>
+                        </Grid>
+                        <Grid Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Height="50">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Grid Width="342" Margin="8 0">
+                                            <ComboBox 
+                                        Name="ClientId" 
+                                        materialDesign:HintAssist.Hint="{x:Static resx:FingerPrintPageResources.lblNombreCliente}"
+                                        IsEditable="True" 
+                                        TextBoxBase.TextChanged="ClientId_TextChanged"
+                                        SelectionChanged="ClientId_SelectionChanged">
+                                            </ComboBox>
+                                            <TextBox Visibility="Hidden" x:Name="Identificacion"></TextBox>
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <Grid Width="300">
+                    <StackPanel>
+                        <Grid>
+                            <materialDesign:Card Padding="2" Margin="20" Height="330">
+                                <StackPanel Orientation="Vertical">
+                                    <Grid Height="300">
+                                        <Image x:Name="ImageClient" Source="{Binding}" Width="auto" Height="300" />
+                                    </Grid>
+                                </StackPanel>
+                            </materialDesign:Card>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="60" Width="1000"  VerticalAlignment="Center">
+                <Button  Content="Crear" 
+                         Name="Insert" 
+                         Click="InsertFingerPrintClient_Click" 
+                         Foreground="White" 
+                         Margin="10 0" 
+                         Background="Gray" 
+                         FontWeight="Bold" 
+                         BorderBrush="{x:Null}" FontSize="18" />
+            </StackPanel>
+            <StackPanel Height="80">
+                <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+                                                 x:Name="SnackBarFingerPrints" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
